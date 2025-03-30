@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Менің жазылымдарым</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="dashboard-container fade-in">
+        <h2 class="title">Менің жазылымдарым</h2>
+        
+        {% if subscriptions %}
+            {% for sub in subscriptions %}
+                <div class="card">
+                    <h3>{{ sub.service_name }}</h3>
+                    <p>Бағасы: {{ sub.price }} ₸</p>
+                    <p>Төлем күні: {{ sub.payment_date }}</p>
+                    <p>Ескерту күні: {{ sub.reminder_days_before }} күн бұрын</p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>Жазылымдар табылмады. Жаңа жазылым қосыңыз.</p>
+        {% endif %}
+    </div>
+</body>
+</html>
